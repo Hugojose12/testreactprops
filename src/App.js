@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import logo from './logo.svg';
 import CommentFrom from './CommentForm';
+import CommentList from './CommentList';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -9,8 +10,21 @@ export default class App extends Component {
     super(props);
 
     this.state = {
-			comments: {},
+			comments: [],
 		};
+  }
+
+  addComment = (name, comment) => {
+    const newComment = {
+      name: name,
+      comment: comment,
+    }
+
+    this.setState({
+      comments: [...this.state.comments, newComment]
+    })
+
+    console.log(this.setState.comments)
   }
 
   render() {
@@ -24,10 +38,10 @@ export default class App extends Component {
         </header>
         <div className="row">
           <div className="col-4">
-            < CommentFrom />
+            < CommentFrom addComment={this.addComment}/>
           </div>
           <div className="col-8">
-          
+            < CommentList comments={this.state.comments}/>
           </div>
         </div>
       </div>
