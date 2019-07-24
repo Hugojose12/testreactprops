@@ -15,6 +15,10 @@ export default class CommentForm extends Component {
     onSubmit = e =>  {
         this.props.addComment(this.state.name, this.state.comment)
         e.preventDefault();
+        this.setState({
+            name: '',
+            comment: '',
+        })
     }
 
     onChange = e => {
@@ -24,7 +28,6 @@ export default class CommentForm extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div>
                 <form onSubmit={this.onSubmit}>

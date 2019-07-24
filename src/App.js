@@ -18,13 +18,12 @@ export default class App extends Component {
     const newComment = {
       name: name,
       comment: comment,
+      id: this.state.comments.length,
     }
 
     this.setState({
       comments: [...this.state.comments, newComment]
     })
-
-    console.log(this.setState.comments)
   }
 
   render() {
